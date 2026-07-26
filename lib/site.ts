@@ -1,8 +1,10 @@
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") ||
+  "https://smiledentalcare-zeta.vercel.app";
+
 export const siteConfig = {
   name: "SmileCare Dental Clinic",
-  url:
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-    "https://smilecare-dental-clinic.vercel.app",
+  url: siteUrl,
   description:
     "Premium family, cosmetic, restorative, and emergency dental care in a modern patient-first clinic.",
   phone: "+15552488820",

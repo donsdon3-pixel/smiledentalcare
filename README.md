@@ -25,7 +25,7 @@ The app runs on `http://localhost:3000` unless that port is already in use.
 Copy `.env.example` to `.env.local` and add real values:
 
 ```env
-NEXT_PUBLIC_SITE_URL=https://your-vercel-domain.vercel.app
+NEXT_PUBLIC_SITE_URL=https://smiledentalcare-zeta.vercel.app
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 SUPABASE_URL=https://your-project-ref.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
