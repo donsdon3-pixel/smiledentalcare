@@ -22,7 +22,7 @@ const supabaseUrl =
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 export async function insertAppointment(
-  appointment: AppointmentInsert,
+  appointment: AppointmentInsert
 ): Promise<SupabaseInsertResult> {
   if (!supabaseUrl || !supabaseServiceKey) {
     return {
