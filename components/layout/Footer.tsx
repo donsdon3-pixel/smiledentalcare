@@ -29,7 +29,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#appointment" className="hover:text-clinic-blue-300">
+                <Link href="/#appointment" className="hover:text-clinic-blue-300">
                   Book Now
                 </Link>
               </li>
