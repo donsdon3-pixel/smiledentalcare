@@ -1,54 +1,44 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
-type AnimatedCounterProps = {
+interface AnimatedCounterProps {
   label: string;
   value: number;
-  suffix?: string;
-};
+  suffix: string;
+}
 
 export function AnimatedCounter({
   label,
-  suffix = "",
   value,
+  suffix,
 }: AnimatedCounterProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, {
-    damping: 28,
-    stiffness: 90,
-  });
-  const [displayValue, setDisplayValue] = useState(0);
-
-  useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [isInView, motionValue, value]);
-
-  useEffect(() => {
-    return springValue.on("change", (latest) => {
-      setDisplayValue(Math.round(latest));
-    });
-  }, [springValue]);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
     <motion.div
       ref={ref}
-      className="rounded-lg border border-clinic-blue-100 bg-white p-5 shadow-soft"
-      initial={{ opacity: 0, y: 16 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.45 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      className="text-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6 }}
     >
-      <dt className="font-display text-3xl font-bold text-clinic-blue-900 sm:text-4xl">
-        {displayValue.toLocaleString()}
-        {suffix}
-      </dt>
-      <dd className="mt-2 text-sm font-medium text-clinic-gray-600">{label}</dd>
+      <div className="font-display text-4xl font-bold text-clinic-blue-600 sm:text-5xl">
+        {isInView ? (
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            {value.toLocaleString()}{suffix}
+          </motion.span>
+        ) : (
+          `0${suffix}`
+        )}
+      </div>
+      <p className="mt-2 text-sm font-semibold text-clinic-gray-600">{label}</p>
     </motion.div>
   );
 }

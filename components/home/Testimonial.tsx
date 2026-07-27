@@ -1,36 +1,31 @@
-"use client";
+import { FaStar } from "react-icons/fa6";
+import { MotionReveal } from "@/components/motion/MotionReveal";
 
-import { motion } from "framer-motion";
-import { FaQuoteLeft, FaStar } from "react-icons/fa6";
-
-type TestimonialProps = {
+interface TestimonialProps {
   name: string;
-  treatment: string;
-  quote: string;
-};
+  role: string;
+  message: string;
+  rating: number;
+}
 
-export function Testimonial({ name, quote, treatment }: TestimonialProps) {
+export function Testimonial({
+  name,
+  role,
+  message,
+  rating,
+}: TestimonialProps) {
   return (
-    <motion.figure
-      className="h-full rounded-lg border border-clinic-gray-200 bg-white p-6 shadow-soft"
-      initial={{ opacity: 0, y: 18 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.5 }}
-      whileInView={{ opacity: 1, y: 0 }}
-    >
-      <FaQuoteLeft aria-hidden="true" className="h-6 w-6 text-clinic-blue-500" />
-      <div className="mt-5 flex gap-1 text-clinic-blue-500" aria-label="5 out of 5 stars">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <FaStar key={index} aria-hidden="true" className="h-4 w-4" />
+    <MotionReveal className="rounded-lg border border-clinic-gray-200 bg-white p-6 shadow-soft">
+      <div className="mb-4 flex gap-1">
+        {Array.from({ length: rating }).map((_, i) => (
+          <FaStar key={i} className="h-4 w-4 text-yellow-400" />
         ))}
       </div>
-      <blockquote className="mt-4 text-sm leading-7 text-clinic-gray-700">
-        &ldquo;{quote}&rdquo;
-      </blockquote>
-      <figcaption className="mt-6">
+      <p className="text-sm text-clinic-gray-700 leading-6">"{message}"</p>
+      <div className="mt-4 border-t border-clinic-gray-200 pt-4">
         <p className="font-semibold text-clinic-blue-900">{name}</p>
-        <p className="text-sm text-clinic-gray-500">{treatment}</p>
-      </figcaption>
-    </motion.figure>
+        <p className="text-sm text-clinic-gray-600">{role}</p>
+      </div>
+    </MotionReveal>
   );
 }

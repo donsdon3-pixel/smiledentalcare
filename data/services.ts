@@ -1,67 +1,32 @@
-export type ServicePageIcon =
-  | "cleaning"
-  | "emergency"
-  | "implant"
-  | "orthodontics"
-  | "pediatric"
-  | "root-canal"
-  | "whitening";
-
-export type ServicePageItem = {
-  title: string;
-  slug: string;
-  description: string;
-  icon: ServicePageIcon;
-};
-
-export const servicePageItems: ServicePageItem[] = [
+export const servicePageItems = [
   {
-    title: "Dental Cleaning",
-    slug: "dental-cleaning",
-    description:
-      "Professional cleanings, plaque removal, polishing, and preventive guidance for healthier gums and teeth.",
-    icon: "cleaning",
+    slug: "general-dentistry",
+    title: "General Dentistry",
+    description: "Routine cleanings, exams, fillings, and preventive care.",
   },
   {
-    title: "Root Canal Treatment",
-    slug: "root-canal-treatment",
-    description:
-      "Precise endodontic care designed to relieve pain, treat infection, and preserve your natural tooth.",
-    icon: "root-canal",
+    slug: "cosmetic-dentistry",
+    title: "Cosmetic Dentistry",
+    description: "Whitening, veneers, bonding, and smile design.",
   },
   {
-    title: "Teeth Whitening",
-    slug: "teeth-whitening",
-    description:
-      "Safe, dentist-guided whitening options for a brighter smile with enamel and sensitivity in mind.",
-    icon: "whitening",
+    slug: "restorative-care",
+    title: "Restorative Care",
+    description: "Crowns, bridges, implants, and emergency repairs.",
   },
   {
-    title: "Dental Implants",
-    slug: "dental-implants",
-    description:
-      "Durable tooth replacement planning and restoration for confident chewing, speaking, and smiling.",
-    icon: "implant",
-  },
-  {
-    title: "Emergency Dental Care",
-    slug: "emergency-dental-care",
-    description:
-      "Prompt care for tooth pain, swelling, broken teeth, lost fillings, and urgent dental concerns.",
-    icon: "emergency",
-  },
-  {
-    title: "Pediatric Dentistry",
-    slug: "pediatric-dentistry",
-    description:
-      "Friendly dental visits for children with prevention, education, and gentle age-appropriate care.",
-    icon: "pediatric",
-  },
-  {
-    title: "Orthodontics",
     slug: "orthodontics",
-    description:
-      "Alignment consultations and treatment planning for straighter teeth and balanced bite function.",
-    icon: "orthodontics",
+    title: "Orthodontics",
+    description: "Traditional braces and clear aligner options.",
   },
-];
+  {
+    slug: "pediatric-dentistry",
+    title: "Pediatric Dentistry",
+    description: "Gentle, child-friendly dental care and education.",
+  },
+  {
+    slug: "periodontal-care",
+    title: "Periodontal Care",
+    description: "Gum disease treatment and prevention.",
+  },
+] as const;

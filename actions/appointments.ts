@@ -1,110 +1,100 @@
 "use server";
 
-import { insertAppointment } from "@/lib/supabase";
-import { servicePageItems } from "@/data/services";
-
 export type AppointmentFormState = {
   status: "idle" | "success" | "error";
   message: string;
-  fieldErrors?: Partial<Record<AppointmentField, string>>;
+  fieldErrors?: Record<string, string>;
 };
 
-type AppointmentField =
-  | "appointment_date"
-  | "appointment_time"
-  | "email"
-  | "message"
-  | "name"
-  | "phone"
-  | "service";
-
-const serviceNames = new Set(servicePageItems.map((service) => service.title));
-
 export async function bookAppointment(
-  _previousState: AppointmentFormState,
-  formData: FormData,
+  prevState: AppointmentFormState,
+  formData: FormData
 ): Promise<AppointmentFormState> {
-  const values = {
-    name: readFormValue(formData, "name"),
-    phone: readFormValue(formData, "phone"),
-    email: readFormValue(formData, "email"),
-    appointment_date: readFormValue(formData, "appointment_date"),
-    appointment_time: readFormValue(formData, "appointment_time"),
-    service: readFormValue(formData, "service"),
-    message: readFormValue(formData, "message"),
-  };
+  try {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const appointmentDate = formData.get("appointment_date") as string;
+    const appointmentTime = formData.get("appointment_time") as string;
+    const service = formData.get("service") as string;
+    const message = formData.get("message") as string;
 
-  const fieldErrors = validateAppointment(values);
+    // Validate required fields
+    const errors: Record<string, string> = {};
 
-  if (Object.keys(fieldErrors).length > 0) {
-    return {
-      status: "error",
-      message: "Please correct the highlighted fields.",
-      fieldErrors,
-    };
-  }
-
-  const result = await insertAppointment({
-    ...values,
-    message: values.message || null,
-  });
-
-  if (!result.ok) {
-    return {
-      status: "error",
-      message: result.error,
-    };
-  }
-
-  return {
-    status: "success",
-    message:
-      "Your appointment request has been sent. Our team will contact you soon to confirm availability.",
-  };
-}
-
-function readFormValue(formData: FormData, key: AppointmentField) {
-  return String(formData.get(key) ?? "").trim();
-}
-
-function validateAppointment(values: Record<AppointmentField, string>) {
-  const errors: Partial<Record<AppointmentField, string>> = {};
-
-  if (values.name.length < 2) {
-    errors.name = "Enter your full name.";
-  }
-
-  if (!/^[+()\-\s\d]{7,20}$/.test(values.phone)) {
-    errors.phone = "Enter a valid phone number.";
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-    errors.email = "Enter a valid email address.";
-  }
-
-  if (!values.appointment_date) {
-    errors.appointment_date = "Choose a preferred date.";
-  } else {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const requestedDate = new Date(`${values.appointment_date}T00:00:00`);
-
-    if (requestedDate < today) {
-      errors.appointment_date = "Choose today or a future date.";
+    if (!name || name.trim().length < 2) {
+      errors.name = "Enter your full name.";
     }
-  }
 
-  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(values.appointment_time)) {
-    errors.appointment_time = "Choose a preferred time.";
-  }
+    if (!/^[+(\)\-\s\d]{7,20}$/.test(phone)) {
+      errors.phone = "Enter a valid phone number.";
+    }
 
-  if (!serviceNames.has(values.service)) {
-    errors.service = "Choose a service.";
-  }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Enter a valid email address.";
+    }
 
-  if (values.message.length > 1000) {
-    errors.message = "Keep your message under 1000 characters.";
-  }
+    if (!appointmentDate) {
+      errors.appointment_date = "Choose a preferred date.";
+    }
 
-  return errors;
+    if (!appointmentTime) {
+      errors.appointment_time = "Choose a preferred time.";
+    }
+
+    if (!service) {
+      errors.service = "Choose a service.";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      return {
+        status: "error",
+        message: "Please fix the errors above.",
+        fieldErrors: errors,
+      };
+    }
+
+    // TODO: Integrate with Supabase to save appointment
+    // Example code (uncomment when Supabase is configured):
+    // const supabase = createClient();
+    // const { data, error } = await supabase
+    //   .from("appointments")
+    //   .insert([
+    //     {
+    //       name,
+    //       email,
+    //       phone,
+    //       appointment_date: appointmentDate,
+    //       appointment_time: appointmentTime,
+    //       service,
+    //       message,
+    //       created_at: new Date().toISOString(),
+    //     },
+    //   ]);
+    // if (error) throw error;
+
+    // For now, just log the submission
+    console.log("Appointment submitted:", {
+      name,
+      email,
+      phone,
+      appointmentDate,
+      appointmentTime,
+      service,
+      message,
+    });
+
+    return {
+      status: "success",
+      message: "Thank you! We received your appointment request. Our team will contact you shortly to confirm.",
+      fieldErrors: {},
+    };
+  } catch (error) {
+    console.error("Appointment booking error:", error);
+    return {
+      status: "error",
+      message: "Something went wrong. Please try again later.",
+      fieldErrors: {},
+    };
+  }
 }

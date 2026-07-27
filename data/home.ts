@@ -1,143 +1,142 @@
-export type ReasonIcon = "shield" | "sparkles" | "stethoscope";
-export type ServiceIcon = "doctor" | "shield" | "sparkles" | "tooth";
+import type { ReasonIcon } from "@/types/home";
 
-type Reason = {
+export const heroActions = {
+  primary: { label: "Book Appointment", href: "#appointment" },
+  secondary: { label: "Learn More", href: "#why-choose-us" },
+} as const;
+
+export const ctaHighlights = [
+  "Same-day emergency care",
+  "Gentle, modern approach",
+  "Family-friendly clinic",
+] as const;
+
+export const reasons: Array<{
   title: string;
   description: string;
   icon: ReasonIcon;
-};
-
-type Service = {
-  title: string;
-  description: string;
-  icon: ServiceIcon;
-};
-
-export const reasons: Reason[] = [
+}> = [
   {
-    title: "Patient-first care",
+    title: "Your Comfort First",
     description:
-      "Every visit starts with clear communication, gentle techniques, and treatment plans that respect your comfort.",
+      "We prioritize a relaxed, anxiety-free experience with state-of-the-art technology and a calming environment.",
     icon: "shield",
   },
   {
-    title: "Advanced diagnostics",
+    title: "Advanced Diagnostics",
     description:
-      "Digital imaging and careful examinations help our team plan precise, minimally invasive dental care.",
-    icon: "stethoscope",
+      "Digital imaging, intraoral cameras, and evidence-based treatment planning ensure precision care.",
+    icon: "sparkles",
   },
   {
-    title: "Calm clinic experience",
+    title: "Expert Team",
     description:
-      "Bright treatment rooms, thoughtful scheduling, and friendly support keep appointments relaxed and efficient.",
-    icon: "sparkles",
+      "Our dentists bring advanced training in all major specialties, from prevention to cosmetics and implants.",
+    icon: "stethoscope",
   },
 ];
 
-export const services: Service[] = [
+export const services = [
   {
-    title: "Preventive Dentistry",
-    description:
-      "Routine exams, cleanings, fluoride care, and gum health checks to protect your smile year-round.",
+    title: "General Dentistry",
+    description: "Cleanings, exams, fillings, and preventive care.",
     icon: "tooth",
   },
   {
-    title: "Cosmetic Smile Design",
-    description:
-      "Whitening, veneers, bonding, and aesthetic planning for a confident, natural-looking smile.",
-    icon: "sparkles",
+    title: "Cosmetic Dentistry",
+    description: "Whitening, veneers, bonding, and smile design.",
+    icon: "sparkle",
   },
   {
     title: "Restorative Care",
-    description:
-      "Tooth-colored fillings, crowns, bridges, and implant restorations built for comfort and durability.",
-    icon: "shield",
+    description: "Crowns, bridges, implants, and emergency repairs.",
+    icon: "wrench",
   },
   {
-    title: "Family Dental Visits",
-    description:
-      "Compassionate care for children, adults, and seniors with appointments designed around busy families.",
-    icon: "doctor",
+    title: "Orthodontics",
+    description: "Traditional braces and clear aligner options.",
+    icon: "align",
   },
-];
+] as const;
 
 export const doctors = [
   {
-    name: "Dr. Anika Rao",
-    role: "Lead Cosmetic Dentist",
-    image: "/images/doctor-anika.svg",
+    name: "Dr. Sarah Mitchell",
+    role: "DDS, Cosmetic & Family Dentistry",
+    image: "/images/doctor-1.jpg",
   },
   {
-    name: "Dr. Michael Chen",
-    role: "Restorative Dentistry Specialist",
-    image: "/images/doctor-michael.svg",
+    name: "Dr. James Chen",
+    role: "DMD, Restorative Dentistry",
+    image: "/images/doctor-2.jpg",
   },
   {
-    name: "Dr. Sophia Patel",
-    role: "Family Dental Care",
-    image: "/images/doctor-sophia.svg",
+    name: "Dr. Amanda Brooks",
+    role: "DDS, Preventive Care Specialist",
+    image: "/images/doctor-3.jpg",
   },
-];
+] as const;
 
 export const stats = [
-  { label: "Happy patients", value: 12000, suffix: "+" },
-  { label: "Years of care", value: 18, suffix: "+" },
-  { label: "Smile makeovers", value: 3200, suffix: "+" },
-  { label: "Patient rating", value: 98, suffix: "%" },
-];
+  { label: "Happy Patients", value: 2800, suffix: "+" },
+  { label: "Years Experience", value: 45, suffix: "" },
+  { label: "5-Star Reviews", value: 480, suffix: "" },
+  { label: "Procedures Completed", value: 15000, suffix: "+" },
+] as const;
 
 export const testimonials = [
   {
-    name: "Maya Williams",
-    treatment: "Cosmetic whitening",
-    quote:
-      "The SmileCare team explained every step and made the entire visit feel easy. My results look bright but still natural.",
+    name: "Jennifer Rodriguez",
+    role: "Patient",
+    message:
+      "Dr. Sarah made my root canal experience painless. The team's attention to detail and calming presence made all the difference.",
+    rating: 5,
   },
   {
-    name: "Daniel Brooks",
-    treatment: "Crown restoration",
-    quote:
-      "I came in nervous and left relieved. The appointment was calm, precise, and much more comfortable than I expected.",
+    name: "Michael Torres",
+    role: "Patient",
+    message:
+      "Finally found a dental clinic that treats you like family. My kids actually look forward to their appointments now.",
+    rating: 5,
   },
   {
-    name: "Priya Nair",
-    treatment: "Family dental visit",
-    quote:
-      "Our whole family goes here now. The doctors are patient with kids and practical with treatment recommendations.",
+    name: "Emily Watson",
+    role: "Patient",
+    message:
+      "The cosmetic work transformed my smile. Professional, thorough, and they explained everything clearly.",
+    rating: 5,
   },
-];
+] as const;
 
 export const faqs = [
   {
-    question: "Do you accept new patients?",
+    question: "How often should I visit the dentist?",
     answer:
-      "Yes. New patient visits include a comprehensive exam, digital records, and a clear care plan.",
+      "We recommend bi-annual check-ups and cleanings for most patients. However, some conditions may require more frequent visits. We'll create a personalized schedule during your consultation.",
   },
   {
-    question: "Can I book an emergency appointment?",
+    question: "Do you offer payment plans?",
     answer:
-      "Same-day emergency slots are available when possible for pain, swelling, broken teeth, or urgent concerns.",
+      "Yes, we work with most insurance plans and offer flexible payment options. We also have relationships with financing partners for larger procedures.",
   },
   {
-    question: "Is cosmetic dentistry suitable for sensitive teeth?",
+    question: "What is your policy on emergency appointments?",
     answer:
-      "Often, yes. We evaluate sensitivity first and recommend options that protect enamel and comfort.",
+      "We reserve same-day slots for emergencies. Call us immediately at (555) 248-8820, and we'll fit you in as soon as possible.",
   },
-];
-
-export const ctaHighlights = [
-  "Same-week appointments",
-  "Transparent care plans",
-  "Gentle treatment options",
-];
-
-export const heroActions = {
-  primary: {
-    label: "Book Appointment",
-    href: "#appointment",
+  {
+    question: "Are your facilities modern and clean?",
+    answer:
+      "Absolutely. Our clinic features modern digital equipment, strict sterilization protocols, and a calming, contemporary design.",
   },
-  secondary: {
-    label: "Explore Services",
-    href: "#services",
+  {
+    question: "Do you treat dental anxiety?",
+    answer:
+      "Yes. We offer a calm environment, explain procedures clearly, and can discuss sedation options for anxious patients.",
   },
-};
+  {
+    question: "How long does a typical first visit take?",
+    answer:
+      "Plan for 60–90 minutes. We conduct a thorough examination, take any necessary imaging, and discuss a personalized care plan.",
+  },
+] as const;
