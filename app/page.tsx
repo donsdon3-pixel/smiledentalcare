@@ -241,15 +241,15 @@ export default function HomePage() {
                 delay={index * 0.08}
                 className="overflow-hidden rounded-lg border border-clinic-gray-200 bg-white shadow-soft"
               >
-                <div className="relative aspect-[13/16] bg-clinic-blue-50">
-                  <Image
-                    src={doctor.image}
-                    alt={`${doctor.name}, ${doctor.role}`}
-                    fill
-                    sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
+                <div className="flex justify-center bg-clinic-blue-50 p-6">
+  <Image
+    src={doctor.image}
+    alt={`${doctor.name}, ${doctor.role}`}
+    width={250}
+    height={300}
+    className="h-auto w-auto"
+  />
+</div>
                 <div className="p-5">
                   <h3 className="font-display text-xl font-bold text-clinic-blue-900">
                     {doctor.name}
