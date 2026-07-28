@@ -1,3 +1,4 @@
+import { contactInfo } from "@/data/contact";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -125,8 +126,8 @@ export default function HomePage() {
                   Call
                 </p>
                 <p className="mt-1 font-bold text-clinic-blue-900">
-                  (555) 248-8820
-                </p>
+  {contactInfo.phone.label}
+</p>
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-clinic-gray-500">
@@ -287,12 +288,20 @@ export default function HomePage() {
               description="Share your preferred time and treatment interest. Our team will follow up to confirm availability."
             />
             <div className="grid gap-4 text-sm text-clinic-gray-700">
-              <ContactLine icon={FaPhone} text="(555) 248-8820" />
-              <ContactLine icon={FaClock} text="Monday to Saturday, 8:00 AM - 6:00 PM" />
               <ContactLine
-                icon={FaLocationDot}
-                text="210 Wellness Avenue, Suite 400, Downtown"
-              />
+  icon={FaPhone}
+  text={contactInfo.phone.label}
+/>
+
+<ContactLine
+  icon={FaClock}
+  text={contactInfo.hours.join(" | ")}
+/>
+
+<ContactLine
+  icon={FaLocationDot}
+  text={contactInfo.address.label}
+/>
             </div>
           </MotionReveal>
 
@@ -327,7 +336,7 @@ export default function HomePage() {
                 Google Maps Placeholder
               </p>
               <p className="mt-2 text-sm text-clinic-gray-600">
-                210 Wellness Avenue, Suite 400
+                {contactInfo.address.label}
               </p>
             </div>
           </MotionReveal>
