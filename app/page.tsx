@@ -186,15 +186,25 @@ export default function HomePage() {
                   delay={index * 0.08}
                   className="rounded-lg border border-clinic-gray-200 bg-white p-6 shadow-soft"
                 >
-                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-md bg-clinic-blue-50 text-clinic-blue-600">
-                    <Icon aria-hidden="true" className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-clinic-blue-900">
-                    {reason.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-clinic-gray-600">
-                    {reason.description}
-                  </p>
+                  <Image
+  src={reason.image}
+  alt={reason.title}
+  width={500}
+  height={300}
+  className="mb-5 h-52 w-full rounded-lg object-cover"
+/>
+
+<div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-clinic-blue-50 text-clinic-blue-600">
+  <Icon aria-hidden="true" className="h-5 w-5" />
+</div>
+
+<h3 className="font-display text-xl font-bold text-clinic-blue-900">
+  {reason.title}
+</h3>
+
+<p className="mt-3 text-sm leading-7 text-clinic-gray-600">
+  {reason.description}
+</p>
                 </MotionReveal>
               );
             })}

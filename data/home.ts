@@ -15,24 +15,28 @@ export const reasons: Array<{
   title: string;
   description: string;
   icon: ReasonIcon;
-}> = [
+  image: string;
+}> = [ 
   {
     title: "Your Comfort First",
     description:
       "We prioritize a relaxed, anxiety-free experience with state-of-the-art technology and a calming environment.",
-    icon: "shield",
+    icon: "shield", 
+    image: "/images/dental-checkup-tirupati-andhra-pradesh.webp" ,
   },
   {
     title: "Advanced Diagnostics",
     description:
       "Digital imaging, intraoral cameras, and evidence-based treatment planning ensure precision care.",
-    icon: "sparkles",
+    icon: "sparkles", 
+    image: "/images/dental-implants-smile-makeover-tirupati-andhra-pradesh.webp",
   },
   {
     title: "Expert Team",
     description:
       "Our dentists bring advanced training in all major specialties, from prevention to cosmetics and implants.",
-    icon: "stethoscope",
+    icon: "stethoscope", 
+    image: "/images/teeth-cleaning-scaling-tirupati-andhra-pradesh.webp",
   },
 ];
 
@@ -61,17 +65,17 @@ export const services = [
 
 export const doctors = [
   {
-    name: "Dr. Sarah Mitchell",
+    name: "Dr. sarala naidu",
     role: "DDS, Cosmetic & Family Dentistry",
     image: "/images/doctor-1.jpg",
   },
   {
-    name: "Dr. James Chen",
+    name: "Dr. Anika reddy",
     role: "DMD, Restorative Dentistry",
     image: "/images/doctor-2.jpg",
   },
   {
-    name: "Dr. Amanda Brooks",
+    name: "Dr. Bhavana chowdary",
     role: "DDS, Preventive Care Specialist",
     image: "/images/doctor-3.jpg",
   },
@@ -86,21 +90,21 @@ export const stats = [
 
 export const testimonials = [
   {
-    name: "Jennifer Rodriguez",
+    name: "Anika",
     role: "Patient",
     message:
       "Dr. Sarah made my root canal experience painless. The team's attention to detail and calming presence made all the difference.",
     rating: 5,
   },
   {
-    name: "Michael Torres",
+    name: "Sarala",
     role: "Patient",
     message:
       "Finally found a dental clinic that treats you like family. My kids actually look forward to their appointments now.",
     rating: 5,
   },
   {
-    name: "Emily Watson",
+    name: "Bhavana",
     role: "Patient",
     message:
       "The cosmetic work transformed my smile. Professional, thorough, and they explained everything clearly.",
