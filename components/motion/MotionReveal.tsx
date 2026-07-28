@@ -2,11 +2,11 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import type { HTMLAttributes } from "react";
+import type { HTMLMotionProps } from "framer-motion";
 
-interface MotionRevealProps extends HTMLAttributes<HTMLDivElement> {
+type MotionRevealProps = HTMLMotionProps<"div"> & {
   delay?: number;
-}
+};
 
 export function MotionReveal({
   children,
@@ -14,7 +14,7 @@ export function MotionReveal({
   className,
   ...props
 }: MotionRevealProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (

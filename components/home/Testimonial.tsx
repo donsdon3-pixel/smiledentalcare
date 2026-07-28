@@ -21,7 +21,7 @@ export function Testimonial({
           <FaStar key={i} className="h-4 w-4 text-yellow-400" />
         ))}
       </div>
-      <p className="text-sm text-clinic-gray-700 leading-6">"{message}"</p>
+      <p className="text-sm text-clinic-gray-700 leading-6">{'"'}{message}{'"'}</p>
       <div className="mt-4 border-t border-clinic-gray-200 pt-4">
         <p className="font-semibold text-clinic-blue-900">{name}</p>
         <p className="text-sm text-clinic-gray-600">{role}</p>

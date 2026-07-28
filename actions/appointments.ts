@@ -22,7 +22,9 @@ type AppointmentField =
   | "phone"
   | "service";
 
-const serviceNames = new Set(servicePageItems.map((service) => service.title));
+const serviceNames = new Set<string>(
+  servicePageItems.map((service) => service.title)
+);
 
 function sanitizeServiceValue(value: string) {
   return serviceNames.has(value) ? value : "";
@@ -74,4 +76,3 @@ export async function bookAppointment(
 function readFormValue(formData: FormData, key: AppointmentField) {
   return String(formData.get(key) ?? "").trim();
 }
-

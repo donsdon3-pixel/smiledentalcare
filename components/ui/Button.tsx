@@ -1,4 +1,9 @@
-import { forwardRef, type ButtonHTMLAttributes } from "react";
+import {
+  forwardRef,
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  type Ref,
+} from "react";
 import { cn } from "@/utils/cn";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,15 +30,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       lg: "h-11 px-5 text-base",
     };
 
-    const Comp = asChild ? "a" : "button";
+    const classes = cn(baseStyles, variants[variant], sizes[size], className);
 
-    return (
-      <Comp
-        className={cn(baseStyles, variants[variant], sizes[size], className)}
-        ref={ref as any}
-        {...(props as any)}
-      />
-    );
+    if (asChild) {
+      return (
+        <a
+          ref={ref as Ref<HTMLAnchorElement>}
+          className={classes}
+          {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+        />
+      );
+    }
+
+    return <button ref={ref} className={classes} {...props} />;
   }
 );
 

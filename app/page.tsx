@@ -31,7 +31,7 @@ import {
   stats,
   testimonials,
 } from "@/data/home";
-import type { ReasonIcon } from "@/data/home";
+import type { ReasonIcon } from "@/types/home";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {

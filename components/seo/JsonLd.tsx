@@ -1,7 +1,9 @@
 "use client";
 
+type JsonLdData = Record<string, unknown>;
+
 interface JsonLdProps {
-  data: any;
+  data: JsonLdData;
 }
 
 export function JsonLd({ data }: JsonLdProps) {
