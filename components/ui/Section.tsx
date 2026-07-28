@@ -1,28 +1,24 @@
-import type { HTMLAttributes, ReactNode } from "react";
-
+import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "@/utils/cn";
 
-type SectionProps = HTMLAttributes<HTMLElement> & {
-  children: ReactNode;
+interface SectionProps extends HTMLAttributes<HTMLElement> {
   muted?: boolean;
-};
+}
 
-export function Section({
-  children,
-  className,
-  muted = false,
-  ...props
-}: SectionProps) {
-  return (
+const Section = forwardRef<HTMLElement, SectionProps>(
+  ({ className, muted, ...props }, ref) => (
     <section
+      ref={ref}
       className={cn(
-        "py-16 sm:py-20 lg:py-24",
+        "py-12 sm:py-16 lg:py-20",
         muted && "bg-clinic-gray-50",
-        className,
+        className
       )}
       {...props}
-    >
-      {children}
-    </section>
-  );
-}
+    />
+  )
+);
+
+Section.displayName = "Section";
+
+export { Section };

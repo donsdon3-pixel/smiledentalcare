@@ -7,61 +7,51 @@ export type ServicePageIcon =
   | "root-canal"
   | "whitening";
 
-export type ServicePageItem = {
-  title: string;
-  slug: string;
-  description: string;
-  icon: ServicePageIcon;
-};
-
-export const servicePageItems: ServicePageItem[] = [
+export const servicePageItems = [
   {
+    slug: "cleaning",
     title: "Dental Cleaning",
-    slug: "dental-cleaning",
     description:
-      "Professional cleanings, plaque removal, polishing, and preventive guidance for healthier gums and teeth.",
-    icon: "cleaning",
+      "Professional cleanings and preventive care to maintain a healthy smile.",
+    icon: "cleaning" as const,
   },
   {
+    slug: "root-canal",
     title: "Root Canal Treatment",
-    slug: "root-canal-treatment",
     description:
-      "Precise endodontic care designed to relieve pain, treat infection, and preserve your natural tooth.",
-    icon: "root-canal",
+      "Comfortable endodontic care to save and restore your natural tooth.",
+    icon: "root-canal" as const,
   },
   {
+    slug: "whitening",
     title: "Teeth Whitening",
-    slug: "teeth-whitening",
-    description:
-      "Safe, dentist-guided whitening options for a brighter smile with enamel and sensitivity in mind.",
-    icon: "whitening",
+    description: "Safe, professional whitening for a brighter, more confident smile.",
+    icon: "whitening" as const,
   },
   {
+    slug: "implant",
     title: "Dental Implants",
-    slug: "dental-implants",
     description:
-      "Durable tooth replacement planning and restoration for confident chewing, speaking, and smiling.",
-    icon: "implant",
+      "Permanent tooth replacement with a natural look and comfortable fit.",
+    icon: "implant" as const,
   },
   {
-    title: "Emergency Dental Care",
-    slug: "emergency-dental-care",
-    description:
-      "Prompt care for tooth pain, swelling, broken teeth, lost fillings, and urgent dental concerns.",
-    icon: "emergency",
+    slug: "emergency",
+    title: "Emergency Care",
+    description: "Same-day appointments for urgent dental pain and injuries.",
+    icon: "emergency" as const,
   },
   {
+    slug: "pediatric",
     title: "Pediatric Dentistry",
-    slug: "pediatric-dentistry",
     description:
-      "Friendly dental visits for children with prevention, education, and gentle age-appropriate care.",
-    icon: "pediatric",
+      "Gentle, child-friendly dental care and preventive guidance for young smiles.",
+    icon: "pediatric" as const,
   },
   {
-    title: "Orthodontics",
     slug: "orthodontics",
-    description:
-      "Alignment consultations and treatment planning for straighter teeth and balanced bite function.",
-    icon: "orthodontics",
+    title: "Orthodontics",
+    description: "Traditional braces and modern clear aligner options for smile alignment.",
+    icon: "orthodontics" as const,
   },
-];
+] as const;

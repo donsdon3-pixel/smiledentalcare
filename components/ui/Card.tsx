@@ -1,21 +1,16 @@
-import type { HTMLAttributes, ReactNode } from "react";
-
+import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "@/utils/cn";
 
-type CardProps = HTMLAttributes<HTMLDivElement> & {
-  children: ReactNode;
-};
+interface CardProps extends HTMLAttributes<HTMLDivElement> {}
 
-export function Card({ children, className, ...props }: CardProps) {
-  return (
-    <div
-      className={cn(
-        "rounded-lg border border-clinic-gray-200 bg-white p-6 shadow-soft",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
+const Card = forwardRef<HTMLDivElement, CardProps>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("rounded-lg border border-clinic-gray-200 bg-white p-6 shadow-soft", className)}
+    {...props}
+  />
+));
+
+Card.displayName = "Card";
+
+export { Card };

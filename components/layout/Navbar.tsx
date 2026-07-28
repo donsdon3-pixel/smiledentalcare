@@ -42,7 +42,7 @@ export function Navbar() {
         </nav>
 
         <Link
-          href="/contact"
+          href="/#appointment"
           className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-clinic-blue-600 px-4 text-sm font-semibold text-white shadow-soft transition hover:bg-clinic-blue-700"
         >
           <FaCalendarCheck aria-hidden="true" />

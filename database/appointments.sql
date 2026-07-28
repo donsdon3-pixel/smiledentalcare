@@ -1,24 +1,23 @@
-create extension if not exists pgcrypto;
-
-create table if not exists public.appointments (
-  id uuid primary key default gen_random_uuid(),
-  created_at timestamptz not null default now(),
-  name text not null,
-  phone text not null,
-  email text not null,
-  service text not null,
-  appointment_date date not null,
-  appointment_time time not null,
-  message text
+-- Create appointments table
+CREATE TABLE IF NOT EXISTS appointments (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  appointment_date DATE NOT NULL,
+  appointment_time TIME NOT NULL,
+  service VARCHAR(255) NOT NULL,
+  message TEXT,
+  status VARCHAR(50) DEFAULT 'pending',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
-alter table public.appointments enable row level security;
+-- Create index on appointment date for faster queries
+CREATE INDEX IF NOT EXISTS idx_appointments_date ON appointments(appointment_date);
 
-create index if not exists appointments_created_at_idx
-  on public.appointments (created_at desc);
+-- Create index on email for finding patient appointments
+CREATE INDEX IF NOT EXISTS idx_appointments_email ON appointments(email);
 
-create index if not exists appointments_appointment_date_idx
-  on public.appointments (appointment_date);
-
-comment on table public.appointments is
-  'Appointment requests submitted from the SmileCare Dental Clinic website.';
+-- Create index on status for filtering appointments
+CREATE INDEX IF NOT EXISTS idx_appointments_status ON appointments(status);

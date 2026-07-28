@@ -1,29 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { HTMLMotionProps } from "framer-motion";
-import type { ReactNode } from "react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import type { HTMLAttributes } from "react";
 
-import { cn } from "@/utils/cn";
-
-type MotionRevealProps = HTMLMotionProps<"div"> & {
-  children: ReactNode;
+interface MotionRevealProps extends HTMLAttributes<HTMLDivElement> {
   delay?: number;
-};
+}
 
 export function MotionReveal({
   children,
-  className,
   delay = 0,
+  className,
   ...props
 }: MotionRevealProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
   return (
     <motion.div
-      className={cn(className)}
-      initial={{ opacity: 0, y: 22 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.55, delay, ease: "easeOut" }}
-      whileInView={{ opacity: 1, y: 0 }}
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      className={className}
       {...props}
     >
       {children}
