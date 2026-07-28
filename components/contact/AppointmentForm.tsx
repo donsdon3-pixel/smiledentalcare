@@ -9,6 +9,7 @@ import {
 } from "@/actions/appointments";
 import { Button } from "@/components/ui/Button";
 import { servicePageItems } from "@/data/services";
+import { validateAppointmentValues } from "@/lib/appointment-validation";
 import { cn } from "@/utils/cn";
 
 const initialState: AppointmentFormState = {
@@ -233,43 +234,16 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 
 function validateClientForm(form: HTMLFormElement) {
   const formData = new FormData(form);
-  const errors: ClientErrors = {};
 
-  const name = String(formData.get("name") ?? "").trim();
-  const phone = String(formData.get("phone") ?? "").trim();
-  const email = String(formData.get("email") ?? "").trim();
-  const appointmentDate = String(formData.get("appointment_date") ?? "").trim();
-  const appointmentTime = String(formData.get("appointment_time") ?? "").trim();
-  const service = String(formData.get("service") ?? "").trim();
-  const message = String(formData.get("message") ?? "").trim();
+  const values = {
+    name: String(formData.get("name") ?? "").trim(),
+    phone: String(formData.get("phone") ?? "").trim(),
+    email: String(formData.get("email") ?? "").trim(),
+    appointment_date: String(formData.get("appointment_date") ?? "").trim(),
+    appointment_time: String(formData.get("appointment_time") ?? "").trim(),
+    service: String(formData.get("service") ?? "").trim(),
+    message: String(formData.get("message") ?? "").trim(),
+  };
 
-  if (name.length < 2) {
-    errors.name = "Enter your full name.";
-  }
-
-  if (!/^[+()\-\s\d]{7,20}$/.test(phone)) {
-    errors.phone = "Enter a valid phone number.";
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    errors.email = "Enter a valid email address.";
-  }
-
-  if (!appointmentDate) {
-    errors.appointment_date = "Choose a preferred date.";
-  }
-
-  if (!appointmentTime) {
-    errors.appointment_time = "Choose a preferred time.";
-  }
-
-  if (!service) {
-    errors.service = "Choose a service.";
-  }
-
-  if (message.length > 1000) {
-    errors.message = "Keep your message under 1000 characters.";
-  }
-
-  return errors;
+  return validateAppointmentValues(values);
 }

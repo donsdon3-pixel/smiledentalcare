@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   FaArrowRight,
@@ -160,6 +161,56 @@ export default function ServicesPage() {
                 </MotionReveal>
               );
             })}
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionTitle
+            eyebrow="Our treatments"
+            title="Gentle care backed by modern dental technology."
+            description="From routine cleanings to advanced restorative work, every treatment at SmileCare is planned for comfort, precision, and lasting results. We serve patients across Tirupati and Andhra Pradesh."
+          />
+          <div className="grid gap-8 lg:grid-cols-2">
+            <MotionReveal delay={0.05}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-clinic-gray-200 bg-white shadow-soft">
+                <Image
+                  src="/images/teeth-cleaning-scaling-tirupati-andhra-pradesh.webp"
+                  alt="Professional teeth cleaning and scaling treatment with dental instruments - SmileCare Dental Clinic, Tirupati, Andhra Pradesh Dental Care"
+                  fill
+                  sizes="(min-width: 1024px) 48vw, 100vw"
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <h3 className="mt-4 font-display text-xl font-bold text-clinic-blue-900">
+                Teeth Cleaning & Scaling
+              </h3>
+              <p className="mt-2 text-sm leading-7 text-clinic-gray-600">
+                Professional cleanings remove plaque and tartar, support gum
+                health, and help detect concerns early.
+              </p>
+            </MotionReveal>
+            <MotionReveal delay={0.1}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-clinic-gray-200 bg-white shadow-soft">
+                <Image
+                  src="/images/dental-implants-smile-makeover-tirupati-andhra-pradesh.webp"
+                  alt="Dental implants and smile makeover treatment planning - SmileCare Dental Clinic, Tirupati, Andhra Pradesh Dental Care"
+                  fill
+                  sizes="(min-width: 1024px) 48vw, 100vw"
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <h3 className="mt-4 font-display text-xl font-bold text-clinic-blue-900">
+                Dental Implants & Smile Makeover
+              </h3>
+              <p className="mt-2 text-sm leading-7 text-clinic-gray-600">
+                Durable tooth replacement and aesthetic restoration planning for
+                confident chewing, speaking, and smiling.
+              </p>
+            </MotionReveal>
           </div>
         </Container>
       </Section>

@@ -27,8 +27,7 @@ export async function insertAppointment(
   if (!supabaseUrl || !supabaseServiceKey) {
     return {
       ok: false,
-      error:
-        "Supabase is not configured. Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY to your environment.",
+      error: "Appointment submission is unavailable right now. Please try again later.",
     };
   }
 
@@ -46,11 +45,11 @@ export async function insertAppointment(
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
+      await response.text();
 
       return {
         ok: false,
-        error: errorText || "Unable to save appointment request.",
+        error: "Unable to save appointment request. Please try again shortly.",
       };
     }
 

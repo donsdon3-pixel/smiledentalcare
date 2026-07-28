@@ -1,15 +1,15 @@
 export const contactInfo = {
   address: {
-    label: "210 Wellness Avenue, Suite 400, Downtown",
-    href: "https://maps.google.com/?q=210%20Wellness%20Avenue%20Suite%20400%20Downtown",
+    label: "SLV Street Smile DENTALCARE Tirupati",
+    href: "https://maps.app.goo.gl/FFwJBmgXu1fb6JCr6",
   },
   phone: {
-    label: "(555) 248-8820",
-    href: "tel:+15552488820",
+    label: "7386157041",
+    href: "tel:+7386157041",
   },
   emergency: {
-    label: "(555) 248-8899",
-    href: "tel:+15552488899",
+    label: "7386157041",
+    href: "tel:+7386157041",
   },
   email: {
     label: "hello@smilecare.example",

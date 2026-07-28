@@ -233,11 +233,35 @@ export default function AboutPage() {
       </Section>
 
       <Section>
+        <Container className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+          <MotionReveal>
+            <SectionTitle
+              eyebrow="Our approach"
+              title="A thorough general dental checkup for every patient."
+              description="Every visit at SmileCare begins with a careful examination, digital imaging when needed, and a clear explanation of your oral health and next steps. We serve families across Tirupati and Andhra Pradesh with gentle, comprehensive dental care."
+            />
+          </MotionReveal>
+          <MotionReveal delay={0.08}>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-clinic-gray-200 bg-white shadow-soft">
+              <Image
+                src="/images/dental-checkup-tirupati-andhra-pradesh.webp"
+                alt="General dental checkup at a modern dental clinic - SmileCare Dental Clinic, Tirupati, Andhra Pradesh Dental Care"
+                fill
+                sizes="(min-width: 1024px) 48vw, 100vw"
+                className="object-cover"
+                loading="lazy"
+              />
+            </div>
+          </MotionReveal>
+        </Container>
+      </Section>
+
+      <Section muted>
         <Container>
           <SectionTitle
-            eyebrow="Why patients trust us"
-            title="A dependable dental home for every stage of care."
-            description="Patients choose SmileCare for consistent communication, respectful recommendations, and care that balances comfort with clinical quality."
+            eyebrow="Core values"
+            title="The principles behind every appointment."
+            description="Our values shape how we communicate, plan treatment, and care for patients before, during, and after each visit."
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {trustReasons.map((reason, index) => (
