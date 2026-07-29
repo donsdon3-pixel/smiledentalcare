@@ -109,7 +109,8 @@ export function AppointmentForm() {
             aria-invalid={Boolean(fieldErrors.service)}
             aria-describedby={fieldErrors.service ? "service-error" : undefined}
             className={cn(
-              "mt-2 h-12 w-full rounded-md border bg-white px-3 text-sm text-clinic-gray-800",
+              "mt-2 h-12 w-full rounded-md border bg-white px-3 text-sm text-clinic-gray-800 transition",
+              "focus:border-clinic-blue-500 focus:outline-none focus:ring-2 focus:ring-clinic-blue-500/20",
               fieldErrors.service
                 ? "border-red-500"
                 : "border-clinic-gray-200",
@@ -211,7 +212,8 @@ function FormField({
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : undefined}
         className={cn(
-          "mt-2 h-12 w-full rounded-md border bg-white px-3 text-sm text-clinic-gray-800",
+          "mt-2 h-12 w-full rounded-md border bg-white px-3 text-sm text-clinic-gray-800 transition",
+          "focus:border-clinic-blue-500 focus:outline-none focus:ring-2 focus:ring-clinic-blue-500/20",
           error ? "border-red-500" : "border-clinic-gray-200",
         )}
       />
