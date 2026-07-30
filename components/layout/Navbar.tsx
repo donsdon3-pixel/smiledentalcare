@@ -15,7 +15,7 @@ export function Navbar() {
           className="flex items-center gap-3"
         >
           <Image
-            src="/images/logo.png.png"
+            src="/images/logo.png"
             alt="SmileCare Dental Clinic"
             width={44}
             height={44}

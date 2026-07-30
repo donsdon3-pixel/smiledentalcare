@@ -67,17 +67,17 @@ export const doctors = [
   {
     name: "Dr. sarala naidu",
     role: "DDS, Cosmetic & Family Dentistry",
-     image: "/images/Sarala.png.png",
+     image: "/images/sarala.png",
   },
   {
     name: "Dr. Anika reddy",
     role: "DMD, Restorative Dentistry",
-     image: "/images/doctor-anika.png",
+     image: "/images/anika.png",
   },
   {
     name: "Dr. Bhavana chowdary",
     role: "DDS, Preventive Care Specialist",
-     image: "/images/doctor-bhavana.png",
+     image: "/images/bhavana.png",
   },
 ] as const;
 
